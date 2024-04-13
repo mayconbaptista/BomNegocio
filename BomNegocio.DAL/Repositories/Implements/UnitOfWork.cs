@@ -10,12 +10,11 @@ namespace BomNegocio.DAL.Repositories.Implements
     public class UnitOfWork : IUnitOfWork
     {
         private IAnuncianteRepository? _anuncianteRepository;
-
         private IAnuncioRepository? _anuncioRepository;
-
         private ICategoriaRepository? _categoriaRepository;
-
         private IInteresseRepository? _InteresseRepository;
+        private IClienteRepository? _clienteRepository;
+        private IEnderecoRepository? _enderecoRepository;
 
         public BNContext _bNContext;
         public UnitOfWork(BNContext bNContext)
@@ -52,6 +51,22 @@ namespace BomNegocio.DAL.Repositories.Implements
             get
             {
                 return _InteresseRepository ?? new InteresseRepository(_bNContext);
+            }
+        }
+
+        public IClienteRepository ClienteRepository
+        {
+            get
+            {
+                return (_clienteRepository ?? new ClienteRepository(_bNContext));
+            }
+        }
+
+        public IEnderecoRepository EnderecoRepository
+        {
+            get
+            {
+                return (_enderecoRepository ?? new EnderecoRepository(_bNContext));
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using BomNegocio.DAL.Models;
+using BomNegocio.DAL.Models.Exceptions;
 using BomNegocio.DAL.Pagination;
 using BomNegocio.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;

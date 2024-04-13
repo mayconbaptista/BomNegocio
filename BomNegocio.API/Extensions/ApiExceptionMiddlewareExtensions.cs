@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
 using BomNegocio.DAL.Models;
+using BomNegocio.DAL.Models.Exceptions;
 
 namespace BomNegocio.API.Extensions
 {

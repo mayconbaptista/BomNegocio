@@ -17,8 +17,8 @@ namespace BomNegocio.DAL.Models
         
 
         /* EF 1..N */
-        public int AapplicationUserId { get; set; }
-        public ApplicationUser? ApplicationUser { get; set; }
+        public int AnuncianteId { get; set; }
+        public Anunciante Anunciante { get; set; }
         /* EF 1..N */
         public int CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
@@ -29,5 +29,6 @@ namespace BomNegocio.DAL.Models
         /* EF 1..N */
         public ICollection<Avaliacao>? Avaliacoes { get; set; } = null;
         public ICollection<Imagem>? Imagens { get; set; } = null;
+        public ICollection<Desejo>? Desejos { get; set; } = null;
     }
 }

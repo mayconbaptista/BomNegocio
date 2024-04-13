@@ -11,15 +11,18 @@ namespace BomNegocio.DAL.Context
 {
     public class BNContext : IdentityDbContext<ApplicationUser>
     {
-        public BNContext (DbContextOptions<BNContext> options) : base(options)
-        {
-
-        }
+        public BNContext (DbContextOptions<BNContext> options) : base(options) { }
 
         public DbSet<Anunciante> Anunciantes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Anuncio> Anuncios { get; set;}
         public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<Avaliacao> Interesses { get; set;}
+        public DbSet<Avaliacao> Avaliacoes { get; set;}
+        public DbSet<Desejo> Desejos { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Imagem> Imagens { get; set; }
+
+
 
         protected override void OnModelCreating (ModelBuilder builder)
         {
