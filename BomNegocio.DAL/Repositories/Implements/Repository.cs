@@ -30,7 +30,7 @@ namespace BomNegocio.DAL.Repositories.Implements
             return entity;
         }
 
-        public async Task<T?> GetAsync (Expression<Func<T, bool>> predicate)
+        public async Task<T?> GetAsyncANT (Expression<Func<T, bool>> predicate)
         {
             return await _dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
         }
@@ -44,6 +44,11 @@ namespace BomNegocio.DAL.Repositories.Implements
         {
             _dbContext.Set<T>().Update(entity);
             return entity;
+        }
+
+        public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(predicate);
         }
     }
 }

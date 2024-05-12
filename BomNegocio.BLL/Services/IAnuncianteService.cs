@@ -9,12 +9,12 @@ using X.PagedList;
 
 namespace BomNegocio.BLL.Services
 {
-    interface IAnuncianteService
+    public interface IAnuncianteService
     {
-        Task<Anunciante?> GetAnuncianteAsync (int id);
-        Task<IPagedList<Anunciante>> GetAll(AnuncianteFilterParameters anuncianteFilterParameters);
-        Task<Anunciante> Update(Anunciante newAnuncinte);
-        Task<Anunciante> Delete(int id);
-        Task<Anunciante> Create(Anunciante anuncio);
+        Task<Anunciante?> GetByIdAsync (int id);
+        Task<IPagedList<Anunciante>> GetAllAsync(AnuncianteFilterParameters anuncianteFilterParameters);
+        Task<Anunciante> UpdateAsync (Anunciante newAnuncinte);
+        Task<Anunciante> DeleteAsync (int id);
+        Task<Anunciante> CreateAsync (Anunciante anuncio);
     }
 }

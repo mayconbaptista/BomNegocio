@@ -125,7 +125,6 @@ internal class Program
         builder.Services.AddScoped<IAnuncianteRepository, AnuncianteRepository>();
         builder.Services.AddScoped<IAnuncioRepository, AnuncioRepository>();
         builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-        builder.Services.AddScoped<IInteresseRepository, InteresseRepository>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddScoped<IAnuncioService, AnuncioService>();

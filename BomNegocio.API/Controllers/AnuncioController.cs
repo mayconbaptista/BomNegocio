@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace BomNegocio.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class AnuncioController : ControllerBase
     {
@@ -36,9 +36,9 @@ namespace BomNegocio.API.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("cadastrar")]
+        [HttpPost]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async Task<ActionResult<AnuncioDTO>> create(AnuncioDTO newAnuncio)
+        public async Task<ActionResult<AnuncioDTO>> create([FromBody] AnuncioDTO newAnuncio)
         {
             string token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
@@ -46,12 +46,12 @@ namespace BomNegocio.API.Controllers
 
             string email = principal.Claims.FirstOrDefault(a => a.Type == ClaimTypes.Email)?.Value!;
 
-            var anuncio = await _anuncioService.CreateAsync(_mapper.Map<Anuncio>(newAnuncio), email);
+            var anuncio = await _anuncioService.CreateAsync(_mapper.Map<Anuncio>(newAnuncio));
 
             return StatusCode(StatusCodes.Status201Created, _mapper.Map<AnuncioDTO>(anuncio));
         }
 
-        [HttpGet("obter/filtro/pagina")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<AnuncioDTO>>> Paginacao ([FromQuery] AnuncioFilterParameters anunciosParams)
         {
             var anuncios = await _anuncioService.GetAllAsync (anunciosParams);
@@ -74,15 +74,15 @@ namespace BomNegocio.API.Controllers
         }
 
 
-        [HttpGet("obter/{Id:int:min(1)}")]
-        public async Task<ActionResult<AnuncioDTO>> getByAnuncianteId(int Id)
+        [HttpGet("{Id:int:min(1)}")]
+        public async Task<ActionResult<AnuncioDTO>> getByAnuncianteId([FromRoute] int Id)
         {
             var anuncio = await _anuncioService.GetAsync(Id);
 
             return Ok(_mapper.Map<AnuncioDTO>(anuncio));
         }
 
-        [HttpPut("atualizar")]
+        [HttpPut]
         [Authorize(Policy = "AnuncianteOnly")]
         public async Task<ActionResult<AnuncioDTO>> update (AnuncioDTO newAnuncio)
         {
@@ -92,23 +92,21 @@ namespace BomNegocio.API.Controllers
 
             string email = principal.Claims.FirstOrDefault(a => a.Type == ClaimTypes.Email)?.Value!;
 
-            var anuncio = await _anuncioService.UpdateAsync(_mapper.Map<Anuncio>(newAnuncio), email);
+            var anuncio = await _anuncioService.UpdateAsync(_mapper.Map<Anuncio>(newAnuncio));
 
             return Ok(_mapper.Map<AnuncioDTO>(anuncio));
         }
 
-        [HttpDelete("deletar/{id:int}")]
+        [HttpDelete("{id:int:min(1)}")]
         [Authorize(Policy = "AdminOnly")]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async Task<ActionResult> Delete(int id) 
+        public async Task<ActionResult> Delete([FromRoute] int id) 
         {
             string token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
             ClaimsPrincipal principal = _tokenService.GetPrincipalFromExpiredToken(token, _configuration);
 
-            string email = principal.Claims.FirstOrDefault(a => a.Type != ClaimTypes.Email)?.Value!;
-
-            _ = await _anuncioService.DeleteAsync(id, email);
+            _ = await _anuncioService.DeleteAsync(id);
 
             return NoContent();
         }

@@ -9,6 +9,7 @@ namespace BomNegocio.DAL.Repositories
 {
     public interface IRepository<T>
     {
+        Task<T?> GetAsyncANT(Expression<Func<T, bool>> predicate);
         Task<T?> GetAsync(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> GetAllAsync ();
         T Create (T entity);

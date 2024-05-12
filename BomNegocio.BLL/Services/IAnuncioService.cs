@@ -11,9 +11,9 @@ namespace BomNegocio.BLL.Services
 {
     public interface IAnuncioService
     {
-        Task<Anuncio> CreateAsync (Anuncio anuncio, string email);
-        Task<Anuncio> UpdateAsync (Anuncio anuncio, string email);
-        Task<Anuncio> DeleteAsync (int id, string email);
+        Task<Anuncio> CreateAsync (Anuncio anuncio);
+        Task<Anuncio> UpdateAsync (Anuncio anuncio);
+        Task<Anuncio> DeleteAsync (int id);
         Task<Anuncio> GetAsync (int id);
         Task<IPagedList<Anuncio>> GetAllAsync (AnuncioFilterParameters anuncioFilterParameters);
     }

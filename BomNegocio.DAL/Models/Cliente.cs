@@ -11,7 +11,10 @@ namespace BomNegocio.DAL.Models
         public int Id { get; set; }
 
         /* 1 .. 1 */
-        public ICollection<Endereco>? Enderecos { get; set; }
+        public int UserId { get; set; }
+        public User? User { get; set; }
+
+        /* 1 .. N */
         public ICollection<Avaliacao>? Avaliacoes { get; set; }
         public ICollection<Desejo>? Desejos { get; set; }
     }

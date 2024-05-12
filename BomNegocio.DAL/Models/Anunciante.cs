@@ -6,13 +6,14 @@ namespace BomNegocio.DAL.Models
 
     public class Anunciante
     {
-
-        [Key]
         public int Id { get; set; }
-        public string Email { get; set; }
+
+        /* 1 .. 1*/
+        public int UserId { get; set; }
+        public User? User { get; set; }
 
         /* EF 1..N */
-        public ICollection<Anuncio>? Anuncios { get; set; } = null;
+        public ICollection<Anuncio>? Anuncios { get; set; }
         public ICollection<Endereco>? Enderecos { get; set;}
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.DAL.Repositories
 {
-    public interface IClienteRepository : IRepository<Cliente>
+    public interface IAvaliacaoRepository : IRepository<Avaliacao>
     {
 
     }

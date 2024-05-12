@@ -2,7 +2,7 @@
 
 namespace BomNegocio.API.DTOs
 {
-    public class LoginModelDTO
+    public class LoginDTO
     {
         [EmailAddress(ErrorMessage = "Email inválido")]
         [Required(ErrorMessage = "O campo Email é obrigatório")]
@@ -10,6 +10,5 @@ namespace BomNegocio.API.DTOs
 
         [Required(ErrorMessage = "O campo Password é obrigatório")]
         public string? Password { get; set; }
-
     }
 }

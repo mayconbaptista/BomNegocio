@@ -9,12 +9,13 @@ namespace BomNegocio.DAL.Models
 {
     public class Imagem
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        public string Path { get; set; }
+        public byte[] Img { get; set; }
 
+        /* 1..n */
         public int AnuncioId;
         public Anuncio? Anuncio { get; set; }
+        public int UserId { get; set; }
+        public User? User { get; set; }
     }
 }

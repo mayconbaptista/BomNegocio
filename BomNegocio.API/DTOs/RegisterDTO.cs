@@ -2,7 +2,7 @@
 
 namespace BomNegocio.API.DTOs
 {
-    public class RegisterModelDTO
+    public class RegisterDTO
     {
         [Required(ErrorMessage = "o campo UserName é obrigatório")]
         public string? UserName { get; set; }

@@ -35,7 +35,7 @@ namespace BomNegocio.API.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login ([FromBody] LoginModelDTO loginModel)
+        public async Task<IActionResult> Login ([FromBody] LoginDTO loginModel)
         {
             var user = await _userManager.FindByEmailAsync(loginModel.Email!);
 
@@ -83,14 +83,14 @@ namespace BomNegocio.API.Controllers
 
         [HttpPost]
         [Route("registrar")]
-        public async Task<IActionResult> Register([FromBody] RegisterModelDTO modelDTO)
+        public async Task<IActionResult> Register([FromBody] RegisterDTO modelDTO)
         {
             var userExists = await _userManager.FindByEmailAsync(modelDTO.Email!);
 
             if (userExists != null)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                       new ResponseDTO { Status = "Error", Message = "User already exists!" });
+                       new Response { Status = "Error", Message = "User already exists!" });
             }
 
             ApplicationUser user = new()
@@ -105,10 +105,10 @@ namespace BomNegocio.API.Controllers
             if (!result.Succeeded)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                       new ResponseDTO { Status = "Error", Message = $"Falha ao criar usuário {modelDTO.UserName}" });
+                       new Response { Status = "Error", Message = $"Falha ao criar usuário {modelDTO.UserName}" });
             }
 
-            return StatusCode(StatusCodes.Status201Created, new ResponseDTO { Status = "ok", Message = "Usuário criado com sucesso!" });
+            return StatusCode(StatusCodes.Status201Created, new Response { Status = "ok", Message = "Usuário criado com sucesso!" });
         }
 
         [HttpPost]
@@ -196,16 +196,16 @@ namespace BomNegocio.API.Controllers
                 if(roleResult.Succeeded)
                 {
                     _logger.LogInformation(1, "Roles adicionada");
-                    return StatusCode(StatusCodes.Status200OK, new ResponseDTO {Status = "Ok", Message = $"Role {roleName} criada com sucesso."});
+                    return StatusCode(StatusCodes.Status200OK, new Response {Status = "Ok", Message = $"Role {roleName} criada com sucesso."});
                 }
                 else
                 {
                     _logger.LogInformation(2, "Error");
-                    return StatusCode(StatusCodes.Status400BadRequest, new ResponseDTO { Status = "Error", Message = "Problema ao adicionar nova role" });
+                    return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = "Problema ao adicionar nova role" });
                 }
             }
 
-            return StatusCode(StatusCodes.Status400BadRequest , new ResponseDTO { Status = "Error", Message = $"A role {roleName} já existe" });
+            return StatusCode(StatusCodes.Status400BadRequest , new Response { Status = "Error", Message = $"A role {roleName} já existe" });
         }
 
         [HttpPost]
@@ -222,16 +222,16 @@ namespace BomNegocio.API.Controllers
                 if(result.Succeeded)
                 {
                     _logger.LogInformation(1, $"Usuário {user} adicionado a role {roleName}");
-                    return StatusCode(StatusCodes.Status200OK, new ResponseDTO { Status = "Ok", Message = $"Usuário {user} adicionado a role {roleName} com sucesso!" });
+                    return StatusCode(StatusCodes.Status200OK, new Response { Status = "Ok", Message = $"Usuário {user} adicionado a role {roleName} com sucesso!" });
                 }
                 else
                 {
                     _logger.LogInformation (2, $"Error: erro ao adicionar o usuário {user} a role {roleName}");
-                    return StatusCode(StatusCodes.Status400BadRequest, new ResponseDTO { Status = "Error", Message = $"Erro ao adicionar o usuário {user} a role {roleName}" });
+                    return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = $"Erro ao adicionar o usuário {user} a role {roleName}" });
                 }
             }
 
-            return BadRequest(new ResponseDTO { Status = "Error", Message = $"Usuário {email} não encontrado" });
+            return BadRequest(new Response { Status = "Error", Message = $"Usuário {email} não encontrado" });
         }
     }
 }
