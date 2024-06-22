@@ -7,8 +7,8 @@ using BomNegocio.BLL.Services;
 using BomNegocio.BLL.Services.Implements;
 using BomNegocio.DAL.Context;
 using BomNegocio.DAL.Models;
-using BomNegocio.DAL.Repositories;
 using BomNegocio.DAL.Repositories.Implements;
+using BomNegocio.Domain.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -127,15 +127,9 @@ internal class Program
         builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<ITokenService, TokenService>();
-        builder.Services.AddScoped<IAnuncioService, AnuncioService>();
-        builder.Services.AddScoped<IAnuncioService, AnuncioService>();
-        builder.Services.AddScoped<ICategoriaService, CategoriaService>();
-
-        //builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
-        //{
-        //    LogLevel = LogLevel.Information
-        //}));
-        //endme
+        builder.Services.AddScoped<IAnuncioService, AnnouncementService>();
+        builder.Services.AddScoped<IAnuncioService, AnnouncementService>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
 
         builder.Services.AddAutoMapper(typeof(MappingProfile));
 

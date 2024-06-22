@@ -11,9 +11,9 @@ using Newtonsoft.Json;
 using X.PagedList;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
-using BomNegocio.BLL.Services;
 using System.Security.Claims;
 using System.Linq;
+using BomNegocio.Application.Services.Interface;
 
 namespace BomNegocio.API.Controllers
 {
@@ -38,7 +38,7 @@ namespace BomNegocio.API.Controllers
 
         [HttpPost]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async Task<ActionResult<AnuncioDTO>> create([FromBody] AnuncioDTO newAnuncio)
+        public async Task<ActionResult<AnnouncementDTO>> create([FromBody] AnnouncementDTO newAnuncio)
         {
             string token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
@@ -48,11 +48,11 @@ namespace BomNegocio.API.Controllers
 
             var anuncio = await _anuncioService.CreateAsync(_mapper.Map<Anuncio>(newAnuncio));
 
-            return StatusCode(StatusCodes.Status201Created, _mapper.Map<AnuncioDTO>(anuncio));
+            return StatusCode(StatusCodes.Status201Created, _mapper.Map<AnnouncementDTO>(anuncio));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnuncioDTO>>> Paginacao ([FromQuery] AnuncioFilterParameters anunciosParams)
+        public async Task<ActionResult<IEnumerable<AnnouncementDTO>>> Paginacao ([FromQuery] AnuncioFilterParameters anunciosParams)
         {
             var anuncios = await _anuncioService.GetAllAsync (anunciosParams);
 
@@ -68,23 +68,23 @@ namespace BomNegocio.API.Controllers
 
             Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-            var anunciosDTO = _mapper.Map<IEnumerable<AnuncioDTO>>(anuncios);
+            var anunciosDTO = _mapper.Map<IEnumerable<AnnouncementDTO>>(anuncios);
 
             return Ok(anunciosDTO);
         }
 
 
         [HttpGet("{Id:int:min(1)}")]
-        public async Task<ActionResult<AnuncioDTO>> getByAnuncianteId([FromRoute] int Id)
+        public async Task<ActionResult<AnnouncementDTO>> getByAnuncianteId([FromRoute] int Id)
         {
             var anuncio = await _anuncioService.GetAsync(Id);
 
-            return Ok(_mapper.Map<AnuncioDTO>(anuncio));
+            return Ok(_mapper.Map<AnnouncementDTO>(anuncio));
         }
 
         [HttpPut]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async Task<ActionResult<AnuncioDTO>> update (AnuncioDTO newAnuncio)
+        public async Task<ActionResult<AnnouncementDTO>> update (AnnouncementDTO newAnuncio)
         {
             string token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
@@ -94,7 +94,7 @@ namespace BomNegocio.API.Controllers
 
             var anuncio = await _anuncioService.UpdateAsync(_mapper.Map<Anuncio>(newAnuncio));
 
-            return Ok(_mapper.Map<AnuncioDTO>(anuncio));
+            return Ok(_mapper.Map<AnnouncementDTO>(anuncio));
         }
 
         [HttpDelete("{id:int:min(1)}")]

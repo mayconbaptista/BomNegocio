@@ -1,5 +1,5 @@
 ﻿using BomNegocio.API.DTOs;
-using BomNegocio.BLL.Services;
+using BomNegocio.Application.Services.Interface;
 using BomNegocio.DAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

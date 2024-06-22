@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BomNegocio.API.DTOs;
-using BomNegocio.BLL.Services;
+using BomNegocio.Application.Services.Interface;
 using BomNegocio.DAL.Models;
 using BomNegocio.DAL.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -12,11 +12,11 @@ namespace BomNegocio.API.Controllers
     [ApiController]
     public class CategoriaController : ControllerBase
     {
-        private readonly ICategoriaService _categoriaService;
+        private readonly ICategoryService _categoriaService;
         private readonly ILogger<CategoriaController> _logger;
         private readonly IMapper _mapper;
 
-        public CategoriaController (ICategoriaService categoriaService, ILogger<CategoriaController> logger, IMapper mapper)
+        public CategoriaController (ICategoryService categoriaService, ILogger<CategoriaController> logger, IMapper mapper)
         {
             _categoriaService = categoriaService;
             _logger = logger;
@@ -25,17 +25,17 @@ namespace BomNegocio.API.Controllers
 
         [HttpPost("cadastrar")]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<ActionResult<CategoriaDTO>> Create (CategoriaDTO categoriaDTO)
+        public async Task<ActionResult<CategoryDTO>> Create (CategoryDTO categoriaDTO)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet("obter")]
-        public async Task<ActionResult<CategoriaDTO>> GetAllAsync ()
+        public async Task<ActionResult<CategoryDTO>> GetAllAsync ()
         {
             var categorias = await _categoriaService.GetCategorias();
 
-            var categoriasDTO = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
+            var categoriasDTO = _mapper.Map<IEnumerable<CategoryDTO>>(categorias);
 
             return Ok(categoriasDTO);
         }

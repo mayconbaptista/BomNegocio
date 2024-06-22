@@ -67,7 +67,7 @@ namespace BomNegocio.API.Controllers
         public async Task<ActionResult<AnuncianteDTO>> create ([FromBody] AnuncianteDTO newAnunciante)
         {
 
-            var anunciante = _anuncianteService.CreateAsync(_mapper.Map<Anunciante>(newAnunciante));
+            var anunciante = _anuncianteService.CreateAsync(_mapper.Map<AdvertiserEntity>(newAnunciante));
 
             if(anunciante is null)
             {
@@ -81,7 +81,7 @@ namespace BomNegocio.API.Controllers
         [Authorize(Policy = "AnuncianteOnly")]
         public async  Task<ActionResult<AnuncianteDTO>> update ([FromBody] AnuncianteDTO newAnunciante)
         {
-            var anunciante = _anuncianteService.UpdateAsync(_mapper.Map<Anunciante>(newAnunciante));
+            var anunciante = _anuncianteService.UpdateAsync(_mapper.Map<AdvertiserEntity>(newAnunciante));
 
             if(anunciante is null)
             {
