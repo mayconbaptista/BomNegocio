@@ -11,13 +11,13 @@ namespace BomNegocio.DAL.Repositories.Implements
     public class UnitOfWork : IUnitOfWork
     {
         private IAnuncianteRepository? _anuncianteRepository;
-        private IAnuncioRepository? _anuncioRepository;
-        private IAvaliacaoRepository? _avaliacaoRepository;
-        private ICategoriaRepository? _categoriaRepository;
-        private IClienteRepository? _clienteRepository;
-        private IDesejoRepository? _desejoRepository;
-        private IEnderecoRepository? _enderecoRepository;
-        private IImagemRepository? _imagemRepository;
+        private IAnnouncementRepository? _anuncioRepository;
+        private IEvaluetionRepository? _avaliacaoRepository;
+        private ICategoryRepository? _categoriaRepository;
+        private IClientRepository? _clienteRepository;
+        private IWisheRepository? _desejoRepository;
+        private IAddressRepository? _enderecoRepository;
+        private IImageRepository? _imagemRepository;
         private IUserRepository? _userRepository;
 
         public BNContext _bNContext;
@@ -34,23 +34,23 @@ namespace BomNegocio.DAL.Repositories.Implements
             }
         }
 
-        public IAnuncioRepository AnuncioRepository
+        public IAnnouncementRepository AnuncioRepository
         {
             get
             {
-                return _anuncioRepository = _anuncioRepository ?? new AnuncioRepository(_bNContext);
+                return _anuncioRepository = _anuncioRepository ?? new AnnouncementRepository(_bNContext);
             }
         }
 
-        public IAvaliacaoRepository AvaliacaoRepository
+        public IEvaluetionRepository AvaliacaoRepository
         {
             get
             {
-                return _avaliacaoRepository = _avaliacaoRepository ?? new AvaliacaoRepository(_bNContext);
+                return _avaliacaoRepository = _avaliacaoRepository ?? new EvaluetionRepository(_bNContext);
             }
         }
 
-        public ICategoriaRepository CategoriaRepository
+        public ICategoryRepository CategoriaRepository
         {
             get
             {
@@ -58,35 +58,35 @@ namespace BomNegocio.DAL.Repositories.Implements
             }
         }
 
-        public IClienteRepository ClienteRepository
+        public IClientRepository ClienteRepository
         {
             get
             {
-                return (_clienteRepository ?? new ClienteRepository(_bNContext));
+                return (_clienteRepository ?? new ClientRepository(_bNContext));
             }
         }
 
-        public IDesejoRepository DesejoRepository
+        public IWisheRepository DesejoRepository
         {
             get
             {
-                return (_desejoRepository ?? new DesejoRepository(_bNContext));
+                return (_desejoRepository ?? new WisheRepository(_bNContext));
             }
         }
 
-        public IEnderecoRepository EnderecoRepository
+        public IAddressRepository EnderecoRepository
         {
             get
             {
-                return (_enderecoRepository ?? new EnderecoRepository(_bNContext));
+                return (_enderecoRepository ?? new AddressRepository(_bNContext));
             }
         }
 
-        public IImagemRepository ImagemRepository
+        public IImageRepository ImagemRepository
         {
             get
             {
-                return (_imagemRepository ?? new ImagemRepository(_bNContext));
+                return (_imageRepository ?? new ImageRepository(_bNContext));
             }
         }
 

@@ -9,12 +9,12 @@ namespace BomNegocio.Domain.Repositories.Interfaces
     public interface IUnitOfWork
     {
         public IAnuncianteRepository AnuncianteRepository { get; }
-        public IAnuncioRepository AnuncioRepository { get; }
-        public ICategoriaRepository CategoriaRepository { get; }
-        public IClienteRepository ClienteRepository { get; }
-        public IDesejoRepository DesejoRepository { get; }
-        public IEnderecoRepository EnderecoRepository { get; }
-        public IImagemRepository ImagemRepository { get; }
+        public IAnnouncementRepository AnuncioRepository { get; }
+        public ICategoryRepository CategoriaRepository { get; }
+        public IClientRepository ClienteRepository { get; }
+        public IWisheRepository DesejoRepository { get; }
+        public IAddressRepository EnderecoRepository { get; }
+        public IImageRepository ImagemRepository { get; }
         public IUserRepository UserRepository { get; }
 
         public

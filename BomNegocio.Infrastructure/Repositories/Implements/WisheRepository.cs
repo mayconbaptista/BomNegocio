@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class DesejoRepository : WriteRepository<WisheEntity>, IDesejoRepository
+    public class WisheRepository : WriteRepository<WisheEntity>, IWisheRepository
     {
-        public DesejoRepository(BNContext dbContext) : base(dbContext)
+        public WisheRepository(BNContext dbContext) : base(dbContext)
         {
         }
     }

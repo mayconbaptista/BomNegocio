@@ -12,9 +12,9 @@ using BomNegocio.Domain.Repositories.Interfaces;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class AnuncioRepository : WriteRepository<Anuncio>, IAnuncioRepository
+    public class AnnouncementRepository : WriteRepository<Anuncio>, IAnnouncementRepository
     {
-        public AnuncioRepository(BNContext bnContext) : base(bnContext) { }
+        public AnnouncementRepository(BNContext bnContext) : base(bnContext) { }
 
         public async Task<IPagedList<Anuncio>> GetAnunciosAsync (AnuncioFilterParameters anuncioParams)
         {

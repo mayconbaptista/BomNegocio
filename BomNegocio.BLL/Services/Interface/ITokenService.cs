@@ -3,11 +3,11 @@ using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Configuration;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
     public interface ITokenService
     {
-        JwtSecurityToken GenerateAccessToken (IEnumerable<Claim> claims, IConfiguration configuration);
+        JwtSecurityToken GenerateAccessToken(IEnumerable<Claim> claims, IConfiguration configuration);
 
         string GenerateRefreshToken();
 

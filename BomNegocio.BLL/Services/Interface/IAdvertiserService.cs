@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using X.PagedList;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
-    public interface IAnuncianteService
+    public interface IAdvertiserService
     {
-        Task<AdvertiserEntity?> GetByIdAsync (int id);
+        Task<AdvertiserEntity?> GetByIdAsync(int id);
         Task<IPagedList<AdvertiserEntity>> GetAllAsync(AnuncianteFilterParameters anuncianteFilterParameters);
-        Task<AdvertiserEntity> UpdateAsync (AdvertiserEntity newAnuncinte);
-        Task<AdvertiserEntity> DeleteAsync (int id);
-        Task<AdvertiserEntity> CreateAsync (AdvertiserEntity anuncio);
+        Task<AdvertiserEntity> UpdateAsync(AdvertiserEntity newAnuncinte);
+        Task<AdvertiserEntity> DeleteAsync(int id);
+        Task<AdvertiserEntity> CreateAsync(AdvertiserEntity anuncio);
     }
 }

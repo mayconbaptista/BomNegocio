@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.Domain.Repositories.Interfaces
 {
-    public interface IEnderecoRepository : IWriteRepository<AddressEntity>, IReadRepository<AddressEntity>
+    public interface IClientRepository : IWriteRepository<ClientEntity>, IReadRepository<ClientEntity>
     {
 
     }

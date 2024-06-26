@@ -1,9 +1,8 @@
-
-using BomNegocio.API.DTOs.Mappings;
 using BomNegocio.API.Extensions;
 using BomNegocio.API.Filters;
 using BomNegocio.API.Logging;
-using BomNegocio.BLL.Services;
+using BomNegocio.Application.Mappings;
+using BomNegocio.Application.Services.Interface;
 using BomNegocio.BLL.Services.Implements;
 using BomNegocio.DAL.Context;
 using BomNegocio.DAL.Models;
@@ -123,8 +122,8 @@ internal class Program
         builder.Services.AddScoped<IAnuncianteRepository, AnuncianteRepository>();
         //builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         builder.Services.AddScoped<IAnuncianteRepository, AnuncianteRepository>();
-        builder.Services.AddScoped<IAnuncioRepository, AnuncioRepository>();
-        builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+        builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+        builder.Services.AddScoped<ICategoryRepository, CategoriaRepository>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddScoped<IAnuncioService, AnnouncementService>();

@@ -1,5 +1,5 @@
-﻿using BomNegocio.DAL.Models;
-using BomNegocio.DAL.Context;
+﻿using BomNegocio.Domain.Models;
+using BomNegocio.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ using BomNegocio.DAL.Pagination;
 using X.PagedList;
 using BomNegocio.Domain.Repositories.Interfaces;
 
-namespace BomNegocio.DAL.Repositories.Implements
+namespace BomNegocio.Infrastructure.Repositories.Implements
 {
-    public class AnuncianteRepository : ReadRepository<AdvertiserEntity>, WriteRepository<AdvertiserEntity>, IAnuncianteRepository
+    public class AdvertiserRepository : ReadRepository<AdvertiserEntity>, WriteRepository<AdvertiserEntity>, IAnuncianteRepository
     {
-        public AnuncianteRepository(BNContext bnContext) : base(bnContext) { }
+        public AdvertiserRepository(BNContext bnContext) : base(bnContext) { }
 
         public AdvertiserEntity Create(AdvertiserEntity entity)
         {

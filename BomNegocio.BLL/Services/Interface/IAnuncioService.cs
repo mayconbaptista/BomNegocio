@@ -1,20 +1,15 @@
 ﻿using BomNegocio.DAL.Models;
 using BomNegocio.DAL.Pagination;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using X.PagedList;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
     public interface IAnuncioService
     {
-        Task<Anuncio> CreateAsync (Anuncio anuncio);
-        Task<Anuncio> UpdateAsync (Anuncio anuncio);
-        Task<Anuncio> DeleteAsync (int id);
-        Task<Anuncio> GetAsync (int id);
-        Task<IPagedList<Anuncio>> GetAllAsync (AnuncioFilterParameters anuncioFilterParameters);
+        Task<Anun> CreateAsync(AnnouncementEntity anuncio);
+        Task<Anuncio> UpdateAsync(Anuncio anuncio);
+        Task<Anuncio> DeleteAsync(int id);
+        Task<Anuncio> GetAsync(int id);
+        Task<IPagedList<Anuncio>> GetAllAsync(AnuncioFilterParameters anuncioFilterParameters);
     }
 }

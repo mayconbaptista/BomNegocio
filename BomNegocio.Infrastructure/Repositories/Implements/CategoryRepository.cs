@@ -10,7 +10,7 @@ using BomNegocio.Domain.Repositories.Interfaces;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class CategoriaRepository : WriteRepository<CategoryEntity>,  ICategoriaRepository
+    public class CategoryRepository : WriteRepository<CategoryEntity>,  ICategoryRepository
     {
         public CategoriaRepository(BNContext bnContext) : base(bnContext) { }
 

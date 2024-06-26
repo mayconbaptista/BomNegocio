@@ -4,14 +4,15 @@ using BomNegocio.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class AvaliacaoRepository : WriteRepository<EvaluetionEntity>, IAvaliacaoRepository
+    public class ClientRepository : WriteRepository<ClientEntity>, IClientRepository
     {
-        public AvaliacaoRepository(BNContext dbContext) : base(dbContext)
+        public ClientRepository(BNContext dbContext) : base(dbContext)
         {
         }
     }

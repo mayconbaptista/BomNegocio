@@ -1,14 +1,17 @@
 ﻿using BomNegocio.DAL.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace BomNegocio.API.DTOs
 {
     public class WisheDTO
     {
-        public int Id { get; set; }
-        [Required] public string Mensagem { get; set; }
-        public DateTime? DataHora { get; set; }
-        [Required] public string contato { get; set; }
-        [Required] public int AnuncioId { get; set; }
+        [JsonIgnore()]
+        public DateTime CreationDate { get; set; }
+        /* 1..N */
+        public int ClientId { get; set; }
+        public ClientEntity? Client { get; set; }
+        public int AnnouncementId { get; set; }
+        public AnnouncementEntity? Announcement { get; set; }
     }
 }

@@ -1,9 +1,8 @@
-﻿
-using X.PagedList;
+﻿using X.PagedList;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
-    public interface IReadService<TEntity, TDto> 
+    public interface IReadService<TEntity, TDto>
         where TEntity : class
         where TDto : class
     {

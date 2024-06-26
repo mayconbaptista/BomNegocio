@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
-    public interface IWriteService<TEntity, TDto> 
+    public interface IWriteService<TEntity, TDto>
         where TEntity : class
         where TDto : class
     {

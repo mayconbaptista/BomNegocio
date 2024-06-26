@@ -9,7 +9,7 @@ using X.PagedList;
 
 namespace BomNegocio.Domain.Repositories.Interfaces
 {
-    public interface IAnuncioRepository : IWriteRepository<AnnouncementEntity>, IReadRepository<AnnouncementEntity>
+    public interface IAnnouncementRepository : IWriteRepository<AnnouncementEntity>, IReadRepository<AnnouncementEntity>
     {
         Task<IPagedList<AnnouncementEntity>> GetAnunciosAsync(AnuncioFilterParameters parameters);
 

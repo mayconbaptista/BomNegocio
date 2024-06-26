@@ -13,7 +13,7 @@ namespace BomNegocio.API.DTOs
         public string Description { get; set; }
         [Required]
         public decimal Price { get; set; }
-        public DateTime DataHora { get; set; }
+        public DateTime CreationDate { get; set; }
         [Required]
         public int AnuncianteId { get; set; }
         [Required]

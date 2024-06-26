@@ -1,5 +1,6 @@
-﻿using BomNegocio.DAL.Models;
-using BomNegocio.DAL.Repositories;
+﻿using BomNegocio.Application.Services.Interface;
+using BomNegocio.DAL.Models;
+using BomNegocio.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.BLL.Services.Implements
 {
-    public class CategoriaService : ICategoriaService
+    public class CategoryService : ICategoryService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CategoriaService(IUnitOfWork unitOfWork) 
+        public CategoryService(IUnitOfWork unitOfWork) 
         {
             _unitOfWork = unitOfWork;
         }

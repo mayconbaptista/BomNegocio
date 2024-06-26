@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.Domain.Repositories.Interfaces
 {
-    public interface IAvaliacaoRepository : IWriteRepository<EvaluetionEntity>, IReadRepository<EvaluetionEntity>
+    public interface IEvaluetionRepository : IWriteRepository<EvaluetionEntity>, IReadRepository<EvaluetionEntity>
     {
 
     }

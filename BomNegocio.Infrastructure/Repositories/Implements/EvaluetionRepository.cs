@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class EnderecoRepository : WriteRepository<AddressEntity>, IEnderecoRepository
+    public class EvaluetionRepository : WriteRepository<EvaluetionEntity>, IEvaluetionRepository
     {
-        public EnderecoRepository(BNContext dbContext) : base(dbContext)
+        public EvaluetionRepository(BNContext dbContext) : base(dbContext)
         {
         }
     }

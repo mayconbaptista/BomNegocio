@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.Domain.Repositories.Interfaces
 {
-    public interface ICategoriaRepository : IWriteRepository<CategoryEntity>, IReadRepository<CategoryEntity>
+    public interface ICategoryRepository : IWriteRepository<CategoryEntity>, IReadRepository<CategoryEntity>
     {
 
     }

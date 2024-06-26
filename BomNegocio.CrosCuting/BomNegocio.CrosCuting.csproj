@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BomNegocio.BLL\BomNegocio.Application.csproj" />
+    <ProjectReference Include="..\BomNegocio.DAL\BomNegocio.Domain.csproj" />
+    <ProjectReference Include="..\BomNegocio.Infrastructure\BomNegocio.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IoC\" />
+  </ItemGroup>
+
 </Project>

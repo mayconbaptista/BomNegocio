@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BomNegocio.API.DTOs;
 using BomNegocio.API.Filters;
-using BomNegocio.BLL.Services;
+using BomNegocio.Application.Services.Interface;
 using BomNegocio.DAL.Models;
 using BomNegocio.DAL.Pagination;
 using Microsoft.AspNetCore.Authorization;
@@ -13,13 +13,13 @@ namespace BomNegocio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]/")]
-    public class AnuncianteController : ControllerBase
+    public class AdvertiserController : ControllerBase
     {
-        private readonly IAnuncianteService _anuncianteService;
-        private readonly ILogger <AnuncianteController> _logger;
+        private readonly IAdvertiserService _anuncianteService;
+        private readonly ILogger <AdvertiserController> _logger;
         private readonly IMapper _mapper;
-        public AnuncianteController(IAnuncianteService anuncianteService, 
-                                    ILogger<AnuncianteController> logger, 
+        public AdvertiserController(IAdvertiserService anuncianteService, 
+                                    ILogger<AdvertiserController> logger, 
                                     IMapper mapper) 
         {
             _anuncianteService = anuncianteService;
@@ -29,18 +29,18 @@ namespace BomNegocio.API.Controllers
 
 
         [HttpGet("{id:int:min(1)}")]
-        public async Task<ActionResult<AnuncianteDTO>> getByIdAsync([FromRoute] int id)
+        public async Task<ActionResult<UserDTO>> getByIdAsync([FromRoute] int id)
         {
             _logger.LogInformation("log information");
             
             var anunciante = await this._anuncianteService.GetByIdAsync(id);
 
-            return StatusCode(StatusCodes.Status201Created, _mapper.Map<AnuncianteDTO>(anunciante));
+            return StatusCode(StatusCodes.Status201Created, _mapper.Map<UserDTO>(anunciante));
         }
 
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFilter))]
-        public async Task<ActionResult<IEnumerable<AnuncianteDTO>>> GetAll ([FromQuery] AnuncianteFilterParameters parameters)
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetAll ([FromQuery] AnuncianteFilterParameters parameters)
         {
             var anunciantes = await _anuncianteService.GetAllAsync(parameters);
 
@@ -56,7 +56,7 @@ namespace BomNegocio.API.Controllers
 
             Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-            var anunciantesDTO = _mapper.Map<AnuncianteDTO>(anunciantes);
+            var anunciantesDTO = _mapper.Map<UserDTO>(anunciantes);
 
             return Ok(anunciantesDTO);
         }
@@ -64,7 +64,7 @@ namespace BomNegocio.API.Controllers
 
         [HttpPost]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async Task<ActionResult<AnuncianteDTO>> create ([FromBody] AnuncianteDTO newAnunciante)
+        public async Task<ActionResult<UserDTO>> create ([FromBody] UserDTO newAnunciante)
         {
 
             var anunciante = _anuncianteService.CreateAsync(_mapper.Map<AdvertiserEntity>(newAnunciante));
@@ -74,12 +74,12 @@ namespace BomNegocio.API.Controllers
                 return Conflict(newAnunciante);
             }
 
-            return Ok(_mapper.Map<AnuncianteDTO>(anunciante));
+            return Ok(_mapper.Map<UserDTO>(anunciante));
         }
 
         [HttpPut]
         [Authorize(Policy = "AnuncianteOnly")]
-        public async  Task<ActionResult<AnuncianteDTO>> update ([FromBody] AnuncianteDTO newAnunciante)
+        public async  Task<ActionResult<UserDTO>> update ([FromBody] UserDTO newAnunciante)
         {
             var anunciante = _anuncianteService.UpdateAsync(_mapper.Map<AdvertiserEntity>(newAnunciante));
 
@@ -88,7 +88,7 @@ namespace BomNegocio.API.Controllers
                 return NotFound(newAnunciante);
             }
 
-            return Ok(_mapper.Map<AnuncianteDTO>(anunciante));
+            return Ok(_mapper.Map<UserDTO>(anunciante));
         }
 
 

@@ -7,8 +7,8 @@ namespace BomNegocio.API.DTOs
     {
         public int Id { get; set; }
         [Required]
-        public string Nome { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string Descricao { get; set; }
+        public string Description { get; set; }
     }
 }

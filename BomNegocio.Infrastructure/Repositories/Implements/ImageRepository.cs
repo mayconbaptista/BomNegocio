@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BomNegocio.DAL.Repositories.Implements
 {
-    public class ImagemRepository : WriteRepository<ImageEntity>, IImagemRepository
+    public class ImageRepository : WriteRepository<ImageEntity>, IImageRepository
     {
-        public ImagemRepository(BNContext dbContext) : base(dbContext)
+        public ImageRepository(BNContext dbContext) : base(dbContext)
         {
         }
     }

@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
@@ -21,13 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BomNegocio.BLL\BomNegocio.BLL.csproj" />
-    <ProjectReference Include="..\BomNegocio.DAL\BomNegocio.DAL.csproj" />
+    <Folder Include="Config\" />
+	<Folder Include="Extensions\" />
+	<Folder Include="Response\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Config\" />
-	<Folder Include="Extensions\" />
+    <ProjectReference Include="..\BomNegocio.CrosCuting\BomNegocio.CrosCuting.csproj" />
   </ItemGroup>
 
 </Project>

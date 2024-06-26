@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using BomNegocio.API.DTOs;
 using BomNegocio.DAL.Models;
 
-namespace BomNegocio.API.DTOs.Mappings
+namespace BomNegocio.Application.Mappings
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile() 
+        public MappingProfile()
         {
             CreateMap<AdvertiserEntity, UserDTO>().ReverseMap();
             CreateMap<CategoryEntity, CategoryDTO>().ReverseMap();

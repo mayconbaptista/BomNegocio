@@ -1,6 +1,6 @@
 ﻿using BomNegocio.DAL.Models;
 
-namespace BomNegocio.BLL.Services
+namespace BomNegocio.Application.Services.Interface
 {
     public interface ICategoryService
     {
